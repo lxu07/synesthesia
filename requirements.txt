@@ -1,0 +1,6 @@
+requests
+pysoundfile
+numpy
+pandas
+geopandas
+flask
