@@ -1,0 +1,40 @@
+html {
+	background-color: rgba(239,213,175,1);
+	text-align: center;
+	/* make light off white/grey?
+	TRANSPARENCY WORKS LITTT*/
+}
+
+body {
+	background-color: rgba(250,241,228,0.5);
+}
+
+#map {
+	height: 500px;
+	width: 90%;
+	background-color: lightgray;
+	border-width: 5px;
+	border-style: solid;
+	border-color: red;
+	border-radius: 5px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+#header {
+	background: rgb(228,183,122); /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(rgba(161,114,61,0.9), rgba(245,227,202,0.9)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(161,114,61,0.9), rgba(245,227,202,0.9));  /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(161,114,61,0.9), rgba(245,227,202,0.9));  /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(161,114,61,0.9), rgba(245,227,202,0.9));  /* Standard syntax */
+}
+
+/*
+nothing for head {}
+id is #
+class is .
+DON'T DO 20 space px, do 20px
+rgba works! so use instead of just rgb
+border-style - groove or solid
+html width 90%, margin left 5%, margin right 5%
+cute fonts tho!
+*/
