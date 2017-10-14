@@ -27,3 +27,7 @@ def get_env_auth():
 
 def get_ped_auth():
     return BearerAuth(requests.get(uaaurl, params={'grant_type' : 'client_credentials'}, auth=HTTPBasicAuth(client_id, client_secret)).json()['access_token'],'SDSIM-IE-PEDESTRIAN')
+
+
+def get_traffic_auth():
+    return BearerAuth(requests.get(uaaurl, params={'grant_type' : 'client_credentials'}, auth=HTTPBasicAuth(client_id, client_secret)).json()['access_token'],'SDSIM-IE-TRAFFIC')
