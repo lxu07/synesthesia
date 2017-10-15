@@ -16,31 +16,43 @@
 <form action="index.html" method="get">
 	<h3>Enter the start time, end time, and interval.</h3>
 	<div id="questions">
-		Start Day (MM/DD/YYYY): <input type="date" name="startDayText" min="1970-01-01" required="true"><br>
-		Start Time (HH:MM AM/PM): <input type="time" name="startTimeText" required="true"><br>
-		End Day (MM/DD/YYYY): <input type="date" name="endDayText" min="1970-01-01" required="true"><br>
-		End Time (HH:MM AM/PM): <input type="time" name="endTimeText" required="true"><br>
-		Interval (Hrs): <input type="number" name="intervalText" min="1" required="true"><br>
+		Start Day (MM/DD/YYYY): <input type="date" id="startDateID" name="startDayText" min="1970-01-01" required="true"><br>
+		Start Time (HH:MM AM/PM): <input type="time" id ="startTimeID" name="startTimeText" required="true"><br>
+		End Day (MM/DD/YYYY): <input type="date" id="endDateID" name="endDayText" min="1970-01-01" required="true"><br>
+		End Time (HH:MM AM/PM): <input type="time" id="endTimeID" name="endTimeText" required="true"><br>
+		Interval (Hrs): <input type="number" id="interval" name="intervalText" min="1" required="true"><br>
 	</div>
-	<h3>Choose the type of data to be visualized.</h3>
-	<div id="checkboxes">
-		<input type="checkbox" name="option1"> Temperature<br>
-		<input type="checkbox" name="option2"> Pedestrian Flow<br>
-		<input type="checkbox" name="option3"> Pressure<br>
-		<input type="checkbox" name="option4"> Humidity<br>
-		<input type="checkbox" name="option5"> Traffic<br>
-		<input type="checkbox" name="option5"> Audio Level<br><br>
-	</div>
-
-	<input type="submit" value="Submit" onclick="">
-	<input type="reset">
 </form>
-	<div><a href = "map.html"><button>Let's map it!</button></a></div>
+	<div><a href = "map.html" onclick=store()><button>Let's map it!</button></a></div>
+	<div><button onclick=store()>Let's map it 2!</button></a></div>
 
 </body>
 
 <script>
-
+	function store() {
+	
+		if (typeof(Storage) == "undefined") {
+			alert("This page requires HTML5");
+		}
+	
+		var startDay = document.getElementById("startDateID").value;
+		var startTime = document.getElementById("startTimeID").value;
+		var endDay = document.getElementById("endDateID").value;
+		var endTime = document.getElementById("endTimeID").value;
+		var interval = document.getElementById("interval").value;
+		interval*=3600000;
+		var startDayTime = startDay + " " + startTime;
+		var endDayTime = endDay + " " + endTime;
+		var startEpoch = new Date(startDayTime);
+		startEpoch = startEpoch.getTime();
+		var endEpoch = new Date(endDayTime);
+		endEpoch = endEpoch.getTime();
+						
+		localStorage.starttime = startEpoch;
+		localStorage.endtime = endEpoch;
+		localStorage.interval = interval;
+		
+	}
 </script>
 
 
