@@ -34,120 +34,28 @@
 </body>
 
 <script> 
-	var testData = {
-  "data": [
-    {
-      "lat": "33.74851", 
-      "long": "-84.3917", 
-      "value": 101903.74899999976
-    }, 
-    {
-      "lat": "33.74818", 
-      "long": "-84.3878", 
-      "value": 101903.74199999977
-    }, 
-    {
-      "lat": "33.74783", 
-      "long": "-84.3904", 
-      "value": 101903.81999999967
-    }, 
-    {
-      "lat": "33.74911", 
-      "long": "-84.3875", 
-      "value": 101903.81899999981
-    }, 
-    {
-      "lat": "33.74921", 
-      "long": "-84.3872", 
-      "value": 101903.68299999976
-    }, 
-    {
-      "lat": "33.74866", 
-      "long": "-84.3916", 
-      "value": 101903.86299999959
-    }, 
-    {
-      "lat": "33.75074", 
-      "long": "-84.3901", 
-      "value": 101903.78199999986
-    }, 
-    {
-      "lat": "33.75078", 
-      "long": "-84.3896", 
-      "value": 101903.80899999964
-    }, 
-    {
-      "lat": "33.75005", 
-      "long": "-84.3883", 
-      "value": 101903.80099999973
-    }, 
-    {
-      "lat": "33.74921", 
-      "long": "-84.3901", 
-      "value": 101903.57699999968
-    }, 
-    {
-      "lat": "33.74962", 
-      "long": "-84.3905", 
-      "value": 101903.61799999964
-    }, 
-    {
-      "lat": "33.74996", 
-      "long": "-84.3886", 
-      "value": 101903.83899999969
-    }, 
-    {
-      "lat": "33.74901", 
-      "long": "-84.3892", 
-      "value": 101903.74999999972
-    }, 
-    {
-      "lat": "33.74961", 
-      "long": "-84.3908", 
-      "value": 101904.02499999975
-    }, 
-    {
-      "lat": "33.74891", 
-      "long": "-84.3895", 
-      "value": 101903.58999999975
-    }, 
-    {
-      "lat": "33.74954", 
-      "long": "-84.3888", 
-      "value": 101903.86599999976
-    }
-  ], 
-  "datatype": "PASCALS^0", 
-  "end": "1507969145000", 
-  "max": 101904.02499999975, 
-  "min": 101903.57699999968, 
-  "start": "1507606046000"
-}
 
-	
 	var cfg = {
-  // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-  // if scaleRadius is false it will be the constant radius used in pixels
-  "radius": 0.0005,
-  "maxOpacity": .8, 
-  // scales the radius based on map zoom
-  "scaleRadius": true, 
-  // if set to false the heatmap uses the global maximum for colorization
-  // if activated: uses the data maximum within the current map boundaries 
-  //   (there will always be a red spot with useLocalExtremas true)
-  "useLocalExtrema": false,
-  // which field name in your data represents the latitude - default "lat"
-  latField: 'lat',
-  // which field name in your data represents the longitude - default "lng"
-  lngField: 'long',
-  // which field name in your data represents the data value - default "value"
-  valueField: 'value'
-};
+		// radius should be small ONLY if scaleRadius is true (or small radius is intended)
+		// if scaleRadius is false it will be the constant radius used in pixels
+		"radius": 0.0005,
+		"maxOpacity": .8, 
+		// scales the radius based on map zoom
+		"scaleRadius": true, 
+		// if set to false the heatmap uses the global maximum for colorization
+		// if activated: uses the data maximum within the current map boundaries 
+		//   (there will always be a red spot with useLocalExtremas true)
+		"useLocalExtrema": false,
+		// which field name in your data represents the latitude - default "lat"
+		latField: 'lat',
+		// which field name in your data represents the longitude - default "lng"
+		lngField: 'long',
+		// which field name in your data represents the data value - default "value"
+		valueField: 'value'
+	};
 
 	
 	var heatmapLayer = new HeatmapOverlay(cfg);
-
-	
 	var mymap = L.map('map').setView([33.7490, -84.3880], 14);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -157,9 +65,20 @@
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mymap);
+
+	var xmlhttp = new XMLHttpRequest();
+	var url = "http://synesthesia-env.zmen5ecmpy.us-west-2.elasticbeanstalk.com/?datatype=traffic&start=1507606046000&end=1507969145000";	
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var testData = JSON.parse(this.responseText);
+			heatmapLayer.setData(testData);
+			heatmapLayer.addTo(mymap);
+		}
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
   
-	heatmapLayer.setData(testData);
-	heatmapLayer.addTo(mymap);
+	
 
 </script>  
   
