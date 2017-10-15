@@ -40,7 +40,9 @@
 		var interval = document.getElementById("interval").value;
 		interval*=3600000;
 		var startDayTime = startDay + " " + startTime;
+		alert(startDayTime);
 		var endDayTime = endDay + " " + endTime;
+		alert(endDayTime);
 		var startEpoch = new Date(startDayTime);
 		startEpoch = startEpoch.getTime();
 		var endEpoch = new Date(endDayTime);
