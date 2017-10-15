@@ -68,7 +68,7 @@
 
 	var xmlhttp = new XMLHttpRequest();
 	var url = "http://synesthesia-env.zmen5ecmpy.us-west-2.elasticbeanstalk.com/?datatype=traffic&start=" + localStorage.starttime + "&end=" + localStorage.endtime;	
-	//alert(url);
+	alert(url);
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var testData = JSON.parse(this.responseText);
