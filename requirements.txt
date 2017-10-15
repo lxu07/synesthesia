@@ -1,6 +1,5 @@
-requests
-pysoundfile
-numpy
-pandas
-geopandas
 flask
+requests
+numpy
+cffi
+pysoundfile

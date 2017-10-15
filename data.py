@@ -51,7 +51,7 @@ def get_max_amplitude_data(assetUid, timefrom):
         for flac_url_data in r.json()['listOfEntries']['content']:
             url = flac_url_data['url']
             r = requests.get(url, auth=get_ps_auth(), stream=True)
-            audio_data, sample_rate = soundfile.read(io.BytesIO(r.raw.data))
+            audio_data, sample_rate = soundfile.read(io.BytesIO(r.content))
             # print(audio_data)
             data = max(numpy.amax(audio_data), data)
     except ValueError as ve:
