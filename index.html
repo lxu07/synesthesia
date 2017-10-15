@@ -16,9 +16,9 @@
 <form action="index.html" method="get">
 	<h3>Enter the start time, end time, and interval.</h3>
 	<div id="questions">
-		Start Day (MM/DD/YYYY): <input type="date" name="startDayText" max="1979-12-31" required="true"><br>
+		Start Day (MM/DD/YYYY): <input type="date" name="startDayText" min="1970-01-01" required="true"><br>
 		Start Time (HH:MM AM/PM): <input type="time" name="startTimeText" required="true"><br>
-		End Day (MM/DD/YYYY): <input type="date" name="endDayText" max="1979-12-31" required="true"><br>
+		End Day (MM/DD/YYYY): <input type="date" name="endDayText" min="1970-01-01" required="true"><br>
 		End Time (HH:MM AM/PM): <input type="time" name="endTimeText" required="true"><br>
 		Interval (Hrs): <input type="number" name="intervalText" min="1" required="true"><br>
 	</div>
