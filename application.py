@@ -94,7 +94,9 @@ def handle_request():
             data=data,
             datatype=datatype,
             start=request.args['start'],
-            end=request.args['end']
+            end=request.args['end'],
+            max=get_max_value(data),
+            min=get_min_value(data)
         )
     elif request.args['datatype'] == 'pedestrian':
         data = []
@@ -110,7 +112,9 @@ def handle_request():
             data=data,
             datatype=datatype,
             start=request.args['start'],
-            end=request.args['end']
+            end=request.args['end'],
+            max=get_max_value(data),
+            min=get_min_value(data)
         )
     elif request.args['datatype'] == 'traffic':
         data = []
@@ -126,7 +130,9 @@ def handle_request():
             data=data,
             datatype=datatype,
             start=request.args['start'],
-            end=request.args['end']
+            end=request.args['end'],
+            max=get_max_value(data),
+            min=get_min_value(data)
         )
     elif request.args['datatype'] == 'audio':
         data = []
@@ -141,7 +147,18 @@ def handle_request():
             data=data,
             datatype=datatype,
             start=request.args['start'],
+            max=get_max_value(data),
+            min=get_min_value(data)
         )
+
+
+def get_max_value(ld):
+    return max([d['value'] for d in ld])
+
+
+def get_min_value(ld):
+    return min([d['value'] for d in ld])
+
 
 if __name__ == '__main__':
     application.run()

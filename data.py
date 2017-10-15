@@ -102,7 +102,7 @@ def get_env_data(assetUid, starttime, endttime, value):
         for reading in r.json()['content']:
             data.append((reading['timestamp'], reading['measures']['max'], reading['measures']['mean'],
                          reading['measures']['median'], reading['measures']['min'],
-                         reading['properties']['unit']+'^'+reading['properties']['powerOf10']))
+                         reading['properties']['unit']+' E '+reading['properties']['powerOf10']))
     except ValueError as ve:
         print('Encountered error when getting %s for %s from time %s to %s' % (value, assetUid, starttime, endttime))
         print(ve)
