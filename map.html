@@ -72,7 +72,6 @@
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var testData = JSON.parse(this.responseText);
-			alert(testData);
 			heatmapLayer.setData(testData);
 			heatmapLayer.addTo(mymap);
 		}
