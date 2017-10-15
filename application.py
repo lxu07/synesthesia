@@ -96,4 +96,4 @@ def get_min_value(ld):
 
 
 if __name__ == '__main__':
-    application.run()
+    application.run(ssl_context='adhoc')
