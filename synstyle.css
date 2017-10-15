@@ -31,32 +31,27 @@ form {
 
 .button {
 	color: rgb(13,29,50);
+	font-size: 18px;
+	border-radius: 8px;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
+	cursor: pointer;
 }
 
-.button:hover {
-	background-color: rgb(245,227,202);
-	color: red;
+.buttonMap {
+    background-color: rgba(245,227,202,0.9); 
+    color: rgb(13,29,50); 
+    border: 2px solid rgba(161,114,61,0.9);
 }
 
-.button1 {
-	border: 2px solid black;
+.buttonMap:hover {
+    background-color: rgba(161,114,61,0.5);
+    color: white;
 }
-.button2 {
 
-}
-.button3 {
-
-}
-.button4 {
-
-}
-.button5 {
-
-}
-.button6 {
-
+.buttonMap:focus {
+	background-color: rgba(161,114,61,1);
+	color: white;
 }
 
 .disabled {
