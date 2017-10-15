@@ -3,3 +3,4 @@ requests
 numpy
 cffi
 pysoundfile
+flask-cors

@@ -1,7 +1,9 @@
 from flask import *
 from data import *
+from flask_cors import *
 
 application = Flask(__name__)
+CORS(application)
 
 ATLANTA_COORDS = ['33.631674:-84.289464', '33.887419:-84.568929']
 
