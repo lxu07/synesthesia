@@ -4,3 +4,4 @@ numpy
 cffi
 pysoundfile
 flask-cors
+pyopenssl
